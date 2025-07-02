@@ -1,4 +1,4 @@
-miner_key = "your_private_key_here"
+miner_key = "your_private_key_without_0x"
 
 [network]
 rpc_url = "https://chainscan-galileo.0g.ai/"
@@ -6,6 +6,9 @@ log_level = "info"
 
 [storage]
 max_storage = 50000000000
+
+[contracts]
+log_contract_address = "0xabcdef1234567890abcdef1234567890abcdef12
 
 # This is a TOML config file.
 # For more information, see https://github.com/toml-lang/toml
