@@ -9,7 +9,7 @@ log_level = "info"
 max_storage = 50000000000
 
 [contracts]
-log_contract_address = "0x0b8cfca7123d87aaf274caa1dffec9f637a8fa60"
+log_contract_address = "0xbD75117F80b4E22698D0Cd7612d92BDb8eaff628"
 
 # This is a TOML config file.
 # For more information, see https://github.com/toml-lang/toml
