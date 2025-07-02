@@ -28,7 +28,9 @@ screen -r
 
 ## 💻 System Requirements
 
-![image](https://github.com/user-attachments/assets/6f06b201-c4b1-4671-b3e1-bf1e49cb5182)
+- Linux VPS (Ubuntu 20.04 or later)
+- Minimum hardware: 4-core CPU, 8GB RAM, 200GB SSD
+
 
 ## ⚙️ Pre-Setup
 
