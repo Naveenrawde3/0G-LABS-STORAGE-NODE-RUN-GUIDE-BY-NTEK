@@ -168,7 +168,7 @@ reward_contract_address = "0xd3D4D91125D76112AE256327410Dd0414Ee08Cb4"
 #
 # Note, the corresponding address should have enough tokens to pay
 # transaction gas fee.
-miner_key = "e5f3b99e1ab0ec52a9a98a93fe3d9a7c1a313e33d41cbf7297b58a44b84e3e0a"
+miner_key = "your_private_key"
 
 # Period for querying mine context on chain (in seconds)
 #
