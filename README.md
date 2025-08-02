@@ -220,6 +220,16 @@ wget https://github.com/Naveenrawde3/0G-LABS-STORAGE-NODE-RUN-GUIDE-BY-NTEK/rele
   tar -xzvf $HOME/0g-storage-node/run/db/flow_db.tar.gz -C $HOME/0g-storage-node/run/db/
 ```
 
+## 🧪 Step-by-Step Commands
+
+```bash
+sudo systemctl stop zgs && \
+rm -rf $HOME/0g-storage-node/run/db/flow_db && \
+wget https://github.com/Naveenrawde3/0G-LABS-STORAGE-NODE-RUN-GUIDE-BY-NTEK/releases/download/v1.0/flow_db.tar.gz -O $HOME/0g-storage-node/run/db/flow_db.tar.gz && \
+tar -xzvf $HOME/0g-storage-node/run/db/flow_db.tar.gz -C $HOME/0g-storage-node/run/db/ && \
+sudo systemctl restart zgs
+```
+
 
 ## 🔁 Restart ZGS Service
 
