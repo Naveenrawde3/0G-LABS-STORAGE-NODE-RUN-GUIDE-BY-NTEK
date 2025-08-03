@@ -58,19 +58,19 @@ tar -xzvf $HOME/0g-storage-node/run/db/flow_db.tar.gz -C $HOME/0g-storage-node/r
 sudo systemctl restart zgs
 ```
 
-## 📡 5.  Monitoring and Logs
+## 📡 5.  Monitoring and Logs :
 
 ```bash
 sudo systemctl status zgs
 ```
 
-* 6. check Full Logs
+## 6. Check Full Logs :
 
 ```
 tail -f ~/0g-storage-node/run/log/zgs.log.$(TZ=UTC date +%Y-%m-%d)
 ```
 
-### 🔄 7.  Check Syncing:
+### 🔄 7.  Check Syncing :
 
 ```
  while true; do     response=$(curl -s -X POST http://localhost:5678 -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","method":"zgs_getStatus","params":[],"id":1}');     logSyncHeight=$(echo $response | jq '.result.logSyncHeight');     connectedPeers=$(echo $response | jq '.result.connectedPeers');     echo -e "logSyncHeight: \033[32m$logSyncHeight\033[0m, connectedPeers: \033[34m$connectedPeers\033[0m";     sleep 5; done
