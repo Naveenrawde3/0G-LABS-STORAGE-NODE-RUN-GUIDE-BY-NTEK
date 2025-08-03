@@ -7,6 +7,64 @@
 
 ---
 
+### 🖥️ 0G NODE (SHORT COMMAND)
+
+## 1. ALL INSTALLTION :
+
+```bash
+sudo apt-get update && sudo apt-get upgrade -y && sudo apt install curl iptables build-essential git wget lz4 jq make cmake gcc nano automake autoconf tmux htop nvme-cli libgbm1 pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev screen ufw -y &&
+sudo apt install curl iptables build-essential git wget lz4 jq make cmake gcc nano automake autoconf tmux htop nvme-cli libgbm1 pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev screen ufw -y && curl https://sh.rustup.rs -sSf | sh && source $HOME/.cargo/env && rustc --version && wget https://go.dev/dl/go1.24.3.linux-amd64.tar.gz && \
+sudo rm -rf /usr/local/go && \
+sudo tar -C /usr/local -xzf go1.24.3.linux-amd64.tar.gz && \
+rm go1.24.3.linux-amd64.tar.gz && \
+echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc && \
+source ~/.bashrc && go version && git clone https://github.com/0glabs/0g-storage-node.git && cd 0g-storage-node && git checkout v1.0.0 && git submodule update --init && cargo build --release && rm -rf $HOME/0g-storage-node/run/config.toml && curl -o $HOME/0g-storage-node/run/config.toml https://raw.githubusercontent.com/Naveenrawde3/0G-LABS-STORAGE-NODE-RUN-GUIDE-BY-NTEK/main/config.toml && nano $HOME/0g-storage-node/run/config.toml
+````
+
+ ## 🛠  2. SETUP A SYSTEM SERVICE + SNAPSHORT COMMAND
+
+```bash
+sudo tee /etc/systemd/system/zgs.service > /dev/null <<EOF
+[Unit]
+Description=ZGS Node
+After=network.target
+
+[Service]
+User=$USER
+WorkingDirectory=$HOME/0g-storage-node/run
+ExecStart=$HOME/0g-storage-node/target/release/zgs_node --config $HOME/0g-storage-node/run/config.toml
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
+EOF && sudo systemctl daemon-reload && sudo systemctl enable zgs && sudo systemctl start zgs && sudo systemctl stop zgs && \
+rm -rf $HOME/0g-storage-node/run/db/flow_db && \
+wget https://github.com/Naveenrawde3/0G-LABS-STORAGE-NODE-RUN-GUIDE-BY-NTEK/releases/download/v1.0/flow_db.tar.gz -O $HOME/0g-storage-node/run/db/flow_db.tar.gz && \
+tar -xzvf $HOME/0g-storage-node/run/db/flow_db.tar.gz -C $HOME/0g-storage-node/run/db/ && \
+sudo systemctl restart zgs
+````
+
+## 📡 3.  Monitoring and Logs
+
+```bash
+sudo systemctl status zgs
+```
+
+* 4. check Full Logs
+
+```
+tail -f ~/0g-storage-node/run/log/zgs.log.$(TZ=UTC date +%Y-%m-%d)
+```
+
+### 🔄 5.  Check Syncing:
+
+```
+ while true; do     response=$(curl -s -X POST http://localhost:5678 -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","method":"zgs_getStatus","params":[],"id":1}');     logSyncHeight=$(echo $response | jq '.result.logSyncHeight');     connectedPeers=$(echo $response | jq '.result.connectedPeers');     echo -e "logSyncHeight: \033[32m$logSyncHeight\033[0m, connectedPeers: \033[34m$connectedPeers\033[0m";     sleep 5; done
+```
+
+
 ## 🖥️ Node Management
 
 ### 🔄 Reattach to Node Screen:
