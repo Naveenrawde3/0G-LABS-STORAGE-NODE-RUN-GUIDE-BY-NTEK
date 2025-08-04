@@ -7,7 +7,7 @@
 
 ---
 
-### 🖥️ 0G NODE (SHORT COMMAND)
+### 🖥️ 0G NODE (ONE LINER COMMAND)
 
 ## 1. ALL INSTALLTION :
 
